@@ -1,0 +1,287 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Weather Dashboard</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Weather Dashboard</h1>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="cityNameInput" class="col-2 col-sm-1 col-form-label">City:</label>
+                <div class="col-6 col-sm-8 col-lg-9">
+                    <input type="text" class="form-control" id="cityNameInput">
+                </div>
+                <div class="col-4 col-sm-3 col-lg-2">
+                    <button type="submit" id="submitCity" class="btn btn-primary btn-block"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a data-toggle="collapse" data-target="#searchHistoryContainer" href="#searchHistoryContainer">
+                    Search History...
+                    </a>
+                </div>
+            </div>
+            <div id="searchHistoryContainer" class="row collapse">
+
+            </div>
+            <div class="row">
+                <div class="col-12 my-2">
+                    <div class="card mx-auto">
+                        <h5 class="card-header">Current <span id="currentCity"></span> Weather</h5>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span id="currentIcon"></span>
+                                    </div>
+                                    <div class="col-6 col-md-4 col-lg-2">
+                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                    </div>
+                                    <div class="col-6 col-md-8 col-lg-10">
+                                        <span id="currentTemperature"></span> &deg;F
+                                    </div>
+                                    <div class="col-6 col-md-4 col-lg-2">
+                                        <i class="fas fa-water"></i> Humidity:
+                                    </div>
+                                    <div class="col-6 col-md-8 col-lg-10">
+                                        <span id="currentHumidity"></span>%
+                                    </div>
+                                    <div class="col-6 col-md-4 col-lg-2">
+                                        <i class="fas fa-wind"></i> Wind Speed:
+                                    </div>
+                                    <div class="col-6 col-md-8 col-lg-10">
+                                        <span id="currentWindSpeed"></span> MPH
+                                    </div>
+                                    <div class="col-6 col-md-4 col-lg-2">
+                                        <i class="far fa-sun"></i> UV Index:
+                                    </div>
+                                    <div class="col-6 col-md-8 col-lg-10">
+                                        <span id="currentUvIndex"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <br/>
+                                        Last updated on <span id="currentLastUpdatedDt"></span>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 my-2">
+                    <div class="card mx-auto">
+                        <h5 class="card-header"><span id="forecastCity"></span> 5 Day Forecast</h5>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 my-2">
+                                        <div class="card mx-auto">
+                                            <div class="card-header">
+                                                <strong><span id="forecastDt1"></span></strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span id="forecastIcon1"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastTemperature1"></span> &deg;F
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-water"></i> Humidity:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastHumidity1"></span>%
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-wind"></i> Wind Speed:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastWindSpeed1"></span> MPH
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="far fa-sun"></i> UV Index:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastUvIndex1"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <div class="card mx-auto">
+                                            <div class="card-header">
+                                                <strong><span id="forecastDt2"></span></strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span id="forecastIcon2"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastTemperature2"></span> &deg;F
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-water"></i> Humidity:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastHumidity2"></span>%
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-wind"></i> Wind Speed:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastWindSpeed2"></span> MPH
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="far fa-sun"></i> UV Index:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastUvIndex2"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <div class="card mx-auto">
+                                            <div class="card-header">
+                                                <strong><span id="forecastDt3"></span></strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span id="forecastIcon3"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastTemperature3"></span> &deg;F
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-water"></i> Humidity:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastHumidity3"></span>%
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-wind"></i> Wind Speed:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastWindSpeed3"></span> MPH
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="far fa-sun"></i> UV Index:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastUvIndex3"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <div class="card mx-auto">
+                                            <div class="card-header">
+                                                <strong><span id="forecastDt4"></span></strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span id="forecastIcon4"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastTemperature4"></span> &deg;F
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-water"></i> Humidity:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastHumidity4"></span>%
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-wind"></i> Wind Speed:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastWindSpeed4"></span> MPH
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="far fa-sun"></i> UV Index:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastUvIndex4"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <div class="card mx-auto">
+                                            <div class="card-header">
+                                                <strong><span id="forecastDt5"></span></strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span id="forecastIcon5"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-thermometer-half"></i> Temperature:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastTemperature5"></span> &deg;F
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-water"></i> Humidity:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastHumidity5"></span>%
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="fas fa-wind"></i> Wind Speed:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastWindSpeed5"></span> MPH
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <i class="far fa-sun"></i> UV Index:
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <span id="forecastUvIndex5"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
